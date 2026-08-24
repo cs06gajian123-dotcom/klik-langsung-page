@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Utama</title>
+    <script>
+        // Logika Mobile Targeting / Redirect Otomatis ke WhatsApp atau URL Khusus Mobile
+        if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+            // Ubah link di bawah dengan tujuan khusus mobile Anda (contoh: WhatsApp)
+            window.location.href = "https://wa.me/nomorwhatsappanda?text=Halo,%20saya%20dari%20mobile";
+        }
+    </script>
+</head>
+<body>
+    <div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif;">
+        <h1>Selamat Datang di Versi Desktop</h1>
+        <p>Halaman ini khusus untuk pengguna komputer atau laptop.</p>
+    </div>
+</body>
+</html>
